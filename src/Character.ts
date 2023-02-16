@@ -70,4 +70,11 @@ export default class Character implements Fighter {
     }
     this._lifepoints = this._maxLifePoints;
   }
+
+  special(enemy: Fighter): void {
+    const attackPoints = this._strength
+    + this._dexterity + this._energy.amount / 2;
+    this.energy.amount -= 1;
+    enemy.receiveDamage(attackPoints);
+  }
 }
