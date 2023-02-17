@@ -3,12 +3,12 @@ import Character from './Character';
 import Dragon from './Dragon';
 import Monster from './Monster';
 
-const player1 = new Character('edu');
+const player1 = new Character('player1');
 player1.levelUp();
 player1.levelUp();
 player1.levelUp();
-const player2 = new Character('du');
-const player3 = new Character('dudu');
+const player2 = new Character('player2');
+const player3 = new Character('player3');
 
 const monster1 = new Monster();
 const monster2 = new Dragon();
