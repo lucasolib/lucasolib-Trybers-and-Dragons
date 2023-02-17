@@ -13,19 +13,17 @@ export default class Character implements Fighter {
   private _defense: number;
   private _dexterity: number;
   private _energy: Energy;
-  private _name: string;
 
   constructor(name: string) {
-    this._name = name;
     this._dexterity = getRandomInt(1, 10);
     this._strength = getRandomInt(1, 10);
     this._defense = getRandomInt(1, 10);
-    this._race = new Elf(this._name, this.dexterity);
-    this._archetype = new Mage(this._name);
+    this._race = new Elf(name, this._dexterity);
+    this._archetype = new Mage(name);
     this._maxLifePoints = Math.floor(this._race.maxLifePoints / 2);
     this._lifepoints = this._maxLifePoints;
     this._energy = {
-      type_: this.archetype.energyType,
+      type_: this._archetype.energyType,
       amount: getRandomInt(1, 10),
     };
   }
@@ -53,7 +51,7 @@ export default class Character implements Fighter {
     } return this._lifepoints;
   }
 
-  attack(enemy: SimpleFighter): number {
+  attack(enemy: SimpleFighter | Fighter): number {
     const attackPoints = this._strength;
     enemy.receiveDamage(attackPoints);
     return attackPoints;
@@ -71,10 +69,10 @@ export default class Character implements Fighter {
     this._lifepoints = this._maxLifePoints;
   }
 
-  special(enemy: SimpleFighter): void {
-    const attackPoints = this._strength
-    + this._dexterity + this._energy.amount / 2;
-    this.energy.amount -= 1;
-    enemy.receiveDamage(attackPoints);
-  }
+  // special(enemy: SimpleFighter): void {
+  //   const attackPoints = this._strength
+  //   + this._dexterity + this._energy.amount / 2;
+  //   this.energy.amount -= 1;
+  //   enemy.receiveDamage(attackPoints);
+  // }
 }
