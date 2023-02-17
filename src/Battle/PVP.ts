@@ -20,6 +20,6 @@ export default class PVP extends Battle {
 
   fight(): number {
     this.turns();
-    return this.player.lifePoints === -1 ? -1 : 1;
+    return this.player1.lifePoints === -1 ? -1 : 1;
   }
 }
